@@ -21,6 +21,9 @@ function App() {
       "id": tasks.length + 1,
       "task": task
     }
+    //[tasks,newTask]
+    //setTasks([...tasks, req]);
+    //[newTask,tasks]
     setTasks([req, ...tasks]);
     axios.post('/api/tasks', req)
   }
@@ -40,10 +43,8 @@ function App() {
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
-
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
-
                   <h6 className="mb-3">Todo List</h6>
                   <form className="d-flex justify-content-center align-items-center mb-4">
                     <div className="form-outline flex-fill">
@@ -52,13 +53,14 @@ function App() {
                     <button type="submit" className="btn btn-primary btn-lg ms-2" onClick={() => {
                       task && addTask(task)
                       setTask('')
-                    }}><i class="bi bi-plus-circle"></i> Add</button>
+                    }}><i className="bi bi-plus-circle"></i> Add</button>
                   </form>
                   <ul className="list-group mb-0">
                     {
                       tasks.length > 0 &&
                       tasks.map(item => (
-                        <li className="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2" key={item.id}>
+
+                        <li className="card-body list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2 " key={item.id}>
                           <div className="d-flex align-items-center" >
                             <input className="form-check-input me-2" type="checkbox" value="" aria-label="..." />
                             {item.task}

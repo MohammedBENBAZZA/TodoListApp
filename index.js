@@ -39,10 +39,9 @@ app.delete('/api/tasks/:id', (req, res) => {
         let rawdata = fs.readFileSync('tasks.json');
         let tasks = JSON.parse(rawdata);
         tasks = tasks.filter(item => {
-
-
             return item.id !== Number(id)
         })
+        console.log('after delete', tasks);
         const jsonTasks = JSON.stringify(tasks)
         fs.writeFile('tasks.json', jsonTasks, err => {
             if (err) {
